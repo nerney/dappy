@@ -20,9 +20,6 @@ func connect(url string) connection {
 		panic(errCouldNotConnect)
 	}
 	ldapConnection := ldap.NewConn(tcpConnection, false)
-	if ldapConnection == nil {
-		panic(errCouldNotConnect)
-	}
 	ldapConnection.Start()
 	return ldapConnection
 }

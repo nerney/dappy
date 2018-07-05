@@ -56,7 +56,7 @@ func (client client) Authenticate(username, password string) error {
 	if err != nil {
 		return errSearch
 	}
-	if len(searchResult.Entries) != 1 {
+	if len(searchResult.Entries) < 1 {
 		return errNotFound
 	}
 	user := searchResult.Entries[0]
