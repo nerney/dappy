@@ -1,9 +1,16 @@
 sudo: false
 language: go
-go: tip
+go: 
+  - "1.x"
+  - tip
 git:
   depth: 1
 install: true
 notifications:
   email: false
-script: go test -cover
+before_install:
+  - go get -t -v ./...
+script: 
+  - go test -coverprofile=coverage.txt -covermode=atomic
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
