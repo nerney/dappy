@@ -1,15 +1,11 @@
 sudo: false
 language: go
-go: 
-  - "1.x"
-  - tip
+go: master
 git:
   depth: 1
 install: true
 notifications:
   email: false
-before_install:
-  - go get -t -v ./...
 script: 
   - go test -coverprofile=coverage.txt -covermode=atomic
 after_success:
