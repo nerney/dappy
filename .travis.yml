@@ -6,4 +6,4 @@ git:
 install: true
 notifications:
   email: false
-script: go test -race
+script: go test
