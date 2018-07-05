@@ -10,7 +10,7 @@ This package boils down LDAP functionality to one thing: User Authentication.
 
 example:
 
-```
+```go
 package main
 
 import (
