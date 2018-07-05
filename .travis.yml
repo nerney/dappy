@@ -1,0 +1,9 @@
+sudo: false
+language: go
+go: "1.x"
+git:
+  depth: 1
+install: true
+notifications:
+  email: false
+script: go test -race
