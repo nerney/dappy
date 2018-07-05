@@ -1,4 +1,4 @@
-# godap
+# GODAP
 
 Basic LDAP Authenticator for Go
 
