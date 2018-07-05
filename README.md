@@ -9,7 +9,13 @@ Basic LDAP Authenticator for Go
 LDAP is complicated. Many times, all you really need to do is authenticate users with it.
 This package boils down LDAP functionality to one thing: User Authentication.
 
-example:
+Fetch:
+
+```bash
+go get github.com/nerney/godap
+```
+
+Example:
 
 ```go
 package main
