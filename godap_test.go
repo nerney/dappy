@@ -1,14 +1,13 @@
-package godap_test
+package godap
 
 import (
-	"godap"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 )
 
 func TestGodap_HappyPath(t *testing.T) {
-	client := godap.New(godap.Options{
+	client := New(Options{
 		BaseDN:   "dc=example,dc=com",
 		Filter:   "uid",
 		Password: "password",
@@ -20,7 +19,7 @@ func TestGodap_HappyPath(t *testing.T) {
 }
 
 func TestGodap_BindFail(t *testing.T) {
-	client := godap.New(godap.Options{
+	client := New(Options{
 		BaseDN:   "dc=example,dc=com",
 		Filter:   "uid",
 		Password: "badpassword",
@@ -33,7 +32,7 @@ func TestGodap_BindFail(t *testing.T) {
 }
 
 func TestGodap_EmptyPassword(t *testing.T) {
-	client := godap.New(godap.Options{
+	client := New(Options{
 		BaseDN:   "dc=example,dc=com",
 		Filter:   "uid",
 		Password: "password",
@@ -45,7 +44,7 @@ func TestGodap_EmptyPassword(t *testing.T) {
 		"should fail because of empty password")
 }
 func TestGodap_EmptyUsername(t *testing.T) {
-	client := godap.New(godap.Options{
+	client := New(Options{
 		BaseDN:   "dc=example,dc=com",
 		Filter:   "uid",
 		Password: "password",
@@ -58,7 +57,7 @@ func TestGodap_EmptyUsername(t *testing.T) {
 }
 
 func TestGodap_FailSearch(t *testing.T) {
-	client := godap.New(godap.Options{
+	client := New(Options{
 		BaseDN:   "dc=example,dc=com",
 		Filter:   "(",
 		Password: "password",
@@ -71,7 +70,7 @@ func TestGodap_FailSearch(t *testing.T) {
 }
 
 func TestGodap_NotFound(t *testing.T) {
-	client := godap.New(godap.Options{
+	client := New(Options{
 		BaseDN:   "dc=example,dc=com",
 		Filter:   "uid",
 		Password: "password",
@@ -84,7 +83,7 @@ func TestGodap_NotFound(t *testing.T) {
 }
 
 func TestGodap_NoAuth(t *testing.T) {
-	client := godap.New(godap.Options{
+	client := New(Options{
 		BaseDN:   "dc=example,dc=com",
 		Filter:   "uid",
 		Password: "password",
@@ -107,7 +106,7 @@ func TestGodap_NoConnection(t *testing.T) {
 			panic("should panic")
 		}
 	}()
-	godap.New(godap.Options{
+	New(Options{
 		BaseDN:   "dc=example,dc=com",
 		Filter:   "uid",
 		Password: "password",
