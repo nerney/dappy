@@ -10,3 +10,4 @@ before_install:
   - go get -u github.com/mattn/goveralls
 script:
   - $GOPATH/bin/goveralls -service=travis-ci
+after_success: coveralls
