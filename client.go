@@ -18,6 +18,7 @@ type Options struct {
 	Password string
 	Username string
 	URL      string
+	Attrs    []string
 }
 
 type client struct {
@@ -33,6 +34,7 @@ func New(options Options) Client {
 	}
 }
 
+//Authenticate an LDAP user with the provided username and password
 func (client client) Authenticate(username, password string) error {
 	if len(password) < 1 {
 		return errEmptyPassword
@@ -64,4 +66,31 @@ func (client client) Authenticate(username, password string) error {
 		return errCouldNotAuth
 	}
 	return nil
+}
+
+//GetUserEntry from ldap and return
+func (client client) GetUserEntry(username string) (*ldap.Entry, error) {
+	if len(username) < 1 {
+		return nil, errEmptyUsername
+	}
+	client.conn = connect(client.options.URL)
+	if client.conn.Bind(client.options.Username, client.options.Password) != nil {
+		return nil, errCouldNotBind
+	}
+	searchRequest := ldap.NewSearchRequest(
+		client.options.BaseDN,
+		ldap.ScopeWholeSubtree,
+		ldap.NeverDerefAliases,
+		0, 0, false,
+		fmt.Sprintf("(%v=%v)", client.options.Filter, username),
+		client.options.Attrs, nil,
+	)
+	searchResult, err := client.conn.Search(searchRequest)
+	if err != nil {
+		return nil, errSearch
+	}
+	if len(searchResult.Entries) < 1 {
+		return nil, errNotFound
+	}
+	return searchResult.Entries[0], nil
 }
