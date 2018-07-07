@@ -28,8 +28,8 @@ func main() {
 	client := godap.New(godap.Options{
 		BaseDN:   "CN=Users,DC=Company",
 		Filter:   "sAMAccountName",
-		Password: "username",
-		Username: "password",
+		Username: "username",
+		Password: "password",
 		URL:      "ldap.directory.com:389",
 	})
 
