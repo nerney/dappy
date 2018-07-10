@@ -46,5 +46,11 @@ func main() {
 	} else {
 		log.Print("user successfully authenticated!")
 	}
+
+	//get a user entry
+	user, err := client.GetUserEntry(username)
+	if err == nil {
+		user.PrettyPrint(2)
+	}
 }
 ```
