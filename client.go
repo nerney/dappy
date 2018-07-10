@@ -9,16 +9,17 @@ import (
 //Client interface for performing LDAP authentication
 type Client interface {
 	Authenticate(username, password string) error
+	GetUserEntry(username string) (*ldap.Entry, error)
 }
 
 //Options required for GoDAP client
 type Options struct {
-	BaseDN   string
-	Filter   string
-	Password string
-	Username string
-	URL      string
-	Attrs    []string
+	BaseDN       string
+	Filter       string
+	BasePassword string
+	BaseUser     string
+	URL          string
+	Attrs        []string
 }
 
 type client struct {
@@ -43,7 +44,7 @@ func (client client) Authenticate(username, password string) error {
 		return errEmptyUsername
 	}
 	client.conn = connect(client.options.URL)
-	if client.conn.Bind(client.options.Username, client.options.Password) != nil {
+	if client.conn.Bind(client.options.BaseUser, client.options.BasePassword) != nil {
 		return errCouldNotBind
 	}
 	searchRequest := ldap.NewSearchRequest(
@@ -74,7 +75,7 @@ func (client client) GetUserEntry(username string) (*ldap.Entry, error) {
 		return nil, errEmptyUsername
 	}
 	client.conn = connect(client.options.URL)
-	if client.conn.Bind(client.options.Username, client.options.Password) != nil {
+	if client.conn.Bind(client.options.BaseUser, client.options.BasePassword) != nil {
 		return nil, errCouldNotBind
 	}
 	searchRequest := ldap.NewSearchRequest(

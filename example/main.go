@@ -9,11 +9,11 @@ func main() {
 
 	//create a new client
 	client := godap.New(godap.Options{
-		BaseDN:   "CN=Users,DC=Company",
-		Filter:   "sAMAccountName",
-		Password: "username",
-		Username: "password",
-		URL:      "ldap.directory.com:389",
+		BaseDN:       "CN=Users,DC=Company",
+		Filter:       "sAMAccountName",
+		BasePassword: "basePassword",
+		BaseUser:     "baseUsername",
+		URL:          "ldap.directory.com:389",
 	})
 
 	//username and password to authenticate
