@@ -25,7 +25,7 @@ import (
 func main() {
 
 	//create a new client
-	client := dappy.New(godap.Options{
+	client := dappy.New(dappy.Options{
 		BaseDN:       "CN=Users,DC=Company",
 		Filter:       "sAMAccountName",
 		BasePassword: "basePassword",
