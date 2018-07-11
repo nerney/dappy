@@ -1,14 +1,14 @@
 package main
 
 import (
-	"godap"
+	"dappy"
 	"log"
 )
 
 func main() {
 
 	//create a new client
-	client := godap.New(godap.Options{
+	client := dappy.New(godap.Options{
 		BaseDN:       "CN=Users,DC=Company",
 		Filter:       "sAMAccountName",
 		BasePassword: "basePassword",
