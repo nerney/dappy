@@ -1,4 +1,4 @@
-package godap
+package dappy
 
 import (
 	"net"
