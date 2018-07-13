@@ -8,7 +8,9 @@
 [![Report Card](https://goreportcard.com/badge/github.com/nerney/godap)](https://goreportcard.com/report/github.com/nerney/godap)
 
 LDAP is complicated. Many times, all you really need to do is authenticate users with it or fetch a user entry.
-This package boils down LDAP functionality to User Authentication and Entry retrieval.
+This package boils down LDAP functionality to User Authentication and Entry retrieval. 
+
+Thanks to https://github.com/go-ldap/ldap
 
 `go get github.com/nerney/dappy`
 
