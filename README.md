@@ -1,4 +1,4 @@
-# DAPPY
+<p align="left"><img src="logo/horizontal.png" alt="dappy" height="150px"></p>
 
 ## Basic LDAP client for Go
 
