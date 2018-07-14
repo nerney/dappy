@@ -2,10 +2,10 @@
 
 ## Basic LDAP client for Go
 
-[![GoDoc](https://img.shields.io/badge/godoc-reference-5272B4.svg?style=flat-square)](https://godoc.org/github.com/nerney/godap)
-[![Build Status](https://travis-ci.org/nerney/godap.svg?branch=master)](https://travis-ci.org/nerney/godap)
-[![codecov](https://codecov.io/gh/nerney/godap/branch/master/graph/badge.svg)](https://codecov.io/gh/nerney/godap)
-[![Report Card](https://goreportcard.com/badge/github.com/nerney/godap)](https://goreportcard.com/report/github.com/nerney/godap)
+[![GoDoc](https://img.shields.io/badge/godoc-reference-5272B4.svg?style=flat-square)](https://godoc.org/github.com/nerney/dappy)
+[![Build Status](https://travis-ci.org/nerney/dappy.svg?branch=master)](https://travis-ci.org/nerney/dappy)
+[![codecov](https://codecov.io/gh/nerney/dappy/branch/master/graph/badge.svg)](https://codecov.io/gh/nerney/dappy)
+[![Report Card](https://goreportcard.com/badge/github.com/nerney/dappy)](https://goreportcard.com/report/github.com/nerney/dappy)
 
 LDAP is complicated. Many times, all you really need to do is authenticate users with it or fetch a user entry.
 This package boils down LDAP functionality to User Authentication and Entry retrieval. 
