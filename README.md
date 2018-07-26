@@ -20,7 +20,7 @@ Example:
 package main
 
 import (
-	"dappy"
+	"github.com/nerney/dappy"
 	"log"
 )
 
