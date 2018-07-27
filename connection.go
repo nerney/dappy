@@ -7,13 +7,13 @@ import (
 	"gopkg.in/ldap.v2"
 )
 
-//wrapper for ldap connection
+// wrapper for ldap connection
 type connection interface {
 	Bind(username, password string) error
 	Search(searchRequest *ldap.SearchRequest) (*ldap.SearchResult, error)
 }
 
-//creates ldap connection
+// establishes ldap connection
 func connect(url string) connection {
 	tcpConnection, err := net.DialTimeout("tcp", url, time.Second*10)
 	if err != nil {
