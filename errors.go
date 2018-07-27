@@ -2,6 +2,7 @@ package dappy
 
 import "errors"
 
+// dappy errors
 var (
 	errCouldNotConnect = errors.New("godap: could not establish connection")
 	errEmptyPassword   = errors.New("godap: empty password")
