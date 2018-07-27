@@ -6,7 +6,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestGodapAuth_HappyPath(t *testing.T) {
+func TestDappyAuth_HappyPath(t *testing.T) {
 	client := New(Options{
 		BaseDN:       "dc=example,dc=com",
 		Filter:       "uid",
@@ -18,7 +18,7 @@ func TestGodapAuth_HappyPath(t *testing.T) {
 		"should authenticate successfully")
 }
 
-func TestGodapAuth_BindFail(t *testing.T) {
+func TestDappyAuth_BindFail(t *testing.T) {
 	client := New(Options{
 		BaseDN:       "dc=example,dc=com",
 		Filter:       "uid",
@@ -31,7 +31,7 @@ func TestGodapAuth_BindFail(t *testing.T) {
 		"should fail initial bind")
 }
 
-func TestGodapAuth_EmptyPassword(t *testing.T) {
+func TestDappyAuth_EmptyPassword(t *testing.T) {
 	client := New(Options{
 		BaseDN:       "dc=example,dc=com",
 		Filter:       "uid",
@@ -43,7 +43,7 @@ func TestGodapAuth_EmptyPassword(t *testing.T) {
 	assert.Equal(t, "godap: empty password", err.Error(),
 		"should fail because of empty password")
 }
-func TestGodapAuth_EmptyUsername(t *testing.T) {
+func TestDappyAuth_EmptyUsername(t *testing.T) {
 	client := New(Options{
 		BaseDN:       "dc=example,dc=com",
 		Filter:       "uid",
@@ -56,7 +56,7 @@ func TestGodapAuth_EmptyUsername(t *testing.T) {
 		"should fail because of empty username")
 }
 
-func TestGodapAuth_FailSearch(t *testing.T) {
+func TestDappyAuth_FailSearch(t *testing.T) {
 	client := New(Options{
 		BaseDN:       "dc=example,dc=com",
 		Filter:       "(",
@@ -69,7 +69,7 @@ func TestGodapAuth_FailSearch(t *testing.T) {
 		"should fail to perform search")
 }
 
-func TestGodapAuth_NotFound(t *testing.T) {
+func TestDappyAuth_NotFound(t *testing.T) {
 	client := New(Options{
 		BaseDN:       "dc=example,dc=com",
 		Filter:       "uid",
@@ -82,7 +82,7 @@ func TestGodapAuth_NotFound(t *testing.T) {
 		"should fail to find user")
 }
 
-func TestGodapAuth_NoAuth(t *testing.T) {
+func TestDappyAuth_NoAuth(t *testing.T) {
 	client := New(Options{
 		BaseDN:       "dc=example,dc=com",
 		Filter:       "uid",
@@ -95,7 +95,7 @@ func TestGodapAuth_NoAuth(t *testing.T) {
 		"should fail to authenticate user")
 }
 
-func TestGodap_NoConnection(t *testing.T) {
+func TestDappy_NoConnection(t *testing.T) {
 	defer func() {
 		if r := recover(); r != nil {
 			err := r.(error)
@@ -115,7 +115,7 @@ func TestGodap_NoConnection(t *testing.T) {
 	})
 }
 
-func TestGodapGetEntry(t *testing.T) {
+func TestDappyGetEntry(t *testing.T) {
 	client := New(Options{
 		BaseDN:       "dc=example,dc=com",
 		Filter:       "uid",
