@@ -6,13 +6,13 @@ import (
 	"gopkg.in/ldap.v2"
 )
 
-//Client interface for performing LDAP authentication
+// Client interface for performing basic LDAP operations.
 type Client interface {
 	Authenticate(username, password string) error
 	GetUserEntry(username string) (*ldap.Entry, error)
 }
 
-//Options required for GoDAP client
+// Options required for dappy client
 type Options struct {
 	BaseDN       string
 	Filter       string
@@ -22,12 +22,13 @@ type Options struct {
 	Attrs        []string
 }
 
+// client struct to implement interface
 type client struct {
 	options Options
 	conn    connection
 }
 
-//New Godap client with options
+// New dappy client with options.
 func New(options Options) Client {
 	return client{
 		options: options,
@@ -35,7 +36,7 @@ func New(options Options) Client {
 	}
 }
 
-//Authenticate an LDAP user with the provided username and password
+// Authenticate an LDAP user with the provided username and password.
 func (client client) Authenticate(username, password string) error {
 	if len(password) < 1 {
 		return errEmptyPassword
@@ -69,7 +70,7 @@ func (client client) Authenticate(username, password string) error {
 	return nil
 }
 
-//GetUserEntry from ldap and return
+// GetUserEntry from ldap and return entry fields 
 func (client client) GetUserEntry(username string) (*ldap.Entry, error) {
 	if len(username) < 1 {
 		return nil, errEmptyUsername
