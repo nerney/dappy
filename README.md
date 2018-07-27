@@ -33,6 +33,7 @@ func main() {
 		BasePassword: "basePassword",
 		BaseUser:     "baseUsername",
 		URL:          "ldap.directory.com:389",
+		Attrs:        []string{"cn","mail"},
 	})
 
 	//username and password to authenticate
