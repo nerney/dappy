@@ -1,6 +1,6 @@
-sudo: false
 language: go
-go: master
+
+go: "1.12"
 git:
   depth: 1
 install: true
