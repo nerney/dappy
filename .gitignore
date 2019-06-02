@@ -1,87 +1,51 @@
-
-# Created by https://www.gitignore.io/api/go,linux,macos,windows
-
-### Go ###
-# Binaries for programs and plugins
-*.exe
-*.exe~
-*.dll
-*.so
-*.dylib
-
-# Test binary, build with `go test -c`
-*.test
-
-# Output of the go coverage tool, specifically when used with LiteIDE
-*.out
-
-### Linux ###
-*~
-
-# temporary files which can be created if a process still has a handle open of a deleted file
-.fuse_hidden*
-
-# KDE directory preferences
-.directory
-
-# Linux trash folder which might appear on any partition or disk
-.Trash-*
-
-# .nfs files are created when an open file is removed but is still being accessed
-.nfs*
-
-### macOS ###
-# General
 .DS_Store
-.AppleDouble
-.LSOverride
-
-# Icon must end with two \r
-Icon
-
-# Thumbnails
+*.[56789ao]
+*.a[56789o]
+*.so
+*.pyc
 ._*
+.nfs.*
+[56789a].out
+*~
+*.orig
+*.rej
+*.exe
+.*.swp
+core
+*.cgo*.go
+*.cgo*.c
+_cgo_*
+_obj
+_test
+_testmain.go
 
-# Files that might appear in the root of a volume
-.DocumentRevisions-V100
-.fseventsd
-.Spotlight-V100
-.TemporaryItems
-.Trashes
-.VolumeIcon.icns
-.com.apple.timemachine.donotpresent
+/VERSION.cache
+/bin/
+/build.out
+/doc/articles/wiki/*.bin
+/goinstall.log
+/last-change
+/misc/cgo/life/run.out
+/misc/cgo/stdio/run.out
+/misc/cgo/testso/main
+/pkg/
+/src/*.*/
+/src/cmd/cgo/zdefaultcc.go
+/src/cmd/dist/dist
+/src/cmd/go/internal/cfg/zdefaultcc.go
+/src/cmd/go/internal/cfg/zosarch.go
+/src/cmd/internal/objabi/zbootstrap.go
+/src/go/build/zcgo.go
+/src/go/doc/headscan
+/src/runtime/internal/sys/zversion.go
+/src/unicode/maketables
+/test.out
+/test/garbage/*.out
+/test/pass.out
+/test/run.out
+/test/times.out
 
-# Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
-
-### Windows ###
-# Windows thumbnail cache files
-Thumbs.db
-ehthumbs.db
-ehthumbs_vista.db
-
-# Dump file
-*.stackdump
-
-# Folder config file
-[Dd]esktop.ini
-
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
-
-# Windows Installer files
-*.cab
-*.msi
-*.msix
-*.msm
-*.msp
-
-# Windows shortcuts
-*.lnk
-
-
-# End of https://www.gitignore.io/api/go,linux,macos,windows
+# This file includes artifacts of Go build that should not be checked in.
+# For files created by specific development environment (e.g. editor),
+# use alternative ways to exclude files from git.
+# For example, set up .git/info/exclude or use a global .gitignore.
