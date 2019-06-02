@@ -64,10 +64,7 @@ func (c client) Auth(username, password string) error {
 	}
 
 	// attempt auth
-	if err = conn.Bind(results.Entries[0].DN, password); err != nil {
-		return err
-	}
-	return nil
+	return conn.Bind(results.Entries[0].DN, password)
 }
 
 // New dappy client with the provided config
