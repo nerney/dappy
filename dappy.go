@@ -4,7 +4,6 @@ package dappy
 import (
 	"errors"
 	"fmt"
-	"log"
 	"net"
 	"time"
 
@@ -89,7 +88,6 @@ func (c client) Users() (error, []string) {
 
 	sr, err := conn.Search(searchRequest)
 	if err != nil {
-		log.Fatal(err)
 		return err, users
 	}
 
