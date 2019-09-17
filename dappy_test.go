@@ -19,6 +19,15 @@ func TestDappyAuth_HappyPath(t *testing.T) {
 		"should authenticate successfully")
 }
 
+func TestDappyUsers(t *testing.T) {
+	err, re := client.Users()
+	if err != nil {
+		t.Error(err)
+	}else {
+		t.Log("success", re)
+	}
+}
+
 func TestDappyAuth_InitialBindFail(t *testing.T) {
 	_, err := dappy.New(dappy.Config{
 		BaseDN: "dc=example,dc=com",
