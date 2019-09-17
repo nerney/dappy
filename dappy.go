@@ -4,6 +4,7 @@ package dappy
 import (
 	"errors"
 	"fmt"
+	"log"
 	"net"
 	"time"
 
@@ -13,6 +14,7 @@ import (
 // Client interface performs ldap auth operation
 type Client interface {
 	Auth(username, password string) error
+	Users() (error, []string)
 }
 
 // Config to provide a dappy client.
@@ -65,6 +67,36 @@ func (c client) Auth(username, password string) error {
 
 	// attempt auth
 	return conn.Bind(results.Entries[0].DN, password)
+}
+
+// Auth implementation for the Client interface
+func (c client) Users() (error, []string) {
+	// establish connection
+	users := []string{}
+	conn, err := connect(c.Host)
+	if err != nil {
+		return err, users
+	}
+	defer conn.Close()
+
+	searchRequest := ldap.NewSearchRequest(
+		c.BaseDN, // The base dn to search
+		ldap.ScopeWholeSubtree, ldap.NeverDerefAliases, 0, 0, false,
+		"(&(objectClass=organizationalPerson))", // The filter to apply
+		[]string{"dn", "cn"},                    // A list attributes to retrieve
+		nil,
+	)
+
+	sr, err := conn.Search(searchRequest)
+	if err != nil {
+		log.Fatal(err)
+		return err, users
+	}
+
+	for _, entry := range sr.Entries {
+		users = append(users, entry.GetAttributeValue("cn"))
+	}
+	return nil, users
 }
 
 // New dappy client with the provided config
