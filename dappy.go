@@ -5,9 +5,15 @@ import (
 	"errors"
 	"fmt"
 	"net"
+	"strings"
 	"time"
 
 	"gopkg.in/ldap.v3"
+)
+
+var (
+	ErrUserNotFound    = errors.New("user not found")
+	ErrInvalidPassword = errors.New("invalid password")
 )
 
 // Client interface performs ldap auth operation
@@ -60,11 +66,15 @@ func (c client) Auth(username, password string) error {
 		return err
 	}
 	if len(results.Entries) < 1 {
-		return errors.New("not found")
+		return ErrUserNotFound
 	}
 
 	// attempt auth
-	return conn.Bind(results.Entries[0].DN, password)
+	err = conn.Bind(results.Entries[0].DN, password)
+	if isErrInvalidCredentials(err) {
+		return ErrInvalidPassword
+	}
+	return err
 }
 
 // New dappy client with the provided config
@@ -112,4 +122,9 @@ func validateConfig(config Config) (Config, error) {
 		config.Filter = "sAMAccountName"
 	}
 	return config, nil
+}
+
+// isErrInvalidCredentials checks whether err is a Invalid-Credentials error.
+func isErrInvalidCredentials(err error) bool {
+	return err != nil && strings.Contains(err.Error(), "Invalid Credentials")
 }
