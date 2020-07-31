@@ -43,10 +43,12 @@ func main() {
 
 	// attempt the authentication
 	if err := client.Auth(username, password); err != nil {
-		panic(err)
-	} else {
-		log.Println("Success!")
+		if err == dappy.ErrUserNotFound || err == dappy.ErrInvalidPassword {
+		    log.Printf("Failed due to: %v\n", err)
+		} else {
+			panic(err)
+		}
 	}
+	log.Println("Success!")
 }
-
 ```
